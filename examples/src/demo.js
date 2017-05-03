@@ -1,7 +1,9 @@
 import http from 'http';
 import React, { PropTypes } from 'react';
-import $ from "jquery"; //Importing the Jquery
-
+import $ from "jquery";
+const jsdom = require("jsdom");
+const { JSDOM } = jsdom;
+const { window } = new JSDOM(`...`);
 import {
     StyleSheet,
     css,
@@ -18,12 +20,13 @@ const style = StyleSheet.create({
 
 // --- REACT + CUSTOM-TAGS ---
 const SampleApp = ({ value, location}) => {
+
     // --- CUSTOM-SCRIPTS ---
     addMeta([
         {type: 'meta', content: {content: 'something'}},
         {type: 'link', content: {rel: 'http://link'}},
     ]);
-
+    const check = window.location.href;
     const prId = "12512" //We can make it dynamic
     const url = "http://localhost:8000/prId=" + prId;; //window,location.href;
     const id = url.substring(url.lastIndexOf('/') + 1);
@@ -34,6 +37,7 @@ const SampleApp = ({ value, location}) => {
             <h1>Hello {value}</h1>
             <hr />
             <h2>{output} took from prId</h2>
+            <h2>{check} took from prId</h2>
             <hr />
             <h2><a className="redirect" href={'//www.fitchratings.com/prId/' + output} target="_blank">Click Here</a>
             </h2>
