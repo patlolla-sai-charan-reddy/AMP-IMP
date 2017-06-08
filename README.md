@@ -1,3 +1,3 @@
 # AMP-IMP
 
-# ACCELERATED MOBILE PAGES
+# Accelarated Mobile Pages
